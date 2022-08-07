@@ -18,5 +18,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.break-word{
+  word-wrap: break-word;
+}
 </style>
+
