@@ -1,0 +1,26 @@
+name: Build GitHub-Pages Page
+on:
+  workflow_dispatch
+
+jobs:
+  publish-to-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - name: Build website
+        run: |
+          cd frontend
+          yarn install --non-interactive
+          yarn build
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: frontend/dist
+          clean: true
+          clean-exclude: '["CNAME"]'
+          single-commit: true
