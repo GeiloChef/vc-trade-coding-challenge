@@ -1,6 +1,11 @@
 <template>
   <div>
-    <q-card square flat class="fill-width bg-primary" style="height: 25vh">
+    <q-card
+      square
+      flat
+      class="fill-width bg-primary"
+      style="height: 25vh; min-height: 150px"
+    >
       <q-card-section>
         <q-input
           filled
@@ -32,7 +37,9 @@ export default {
   data: () => {
     return {
       textSearch: window.localStorage.getItem("searchText") || "",
-      genderFilter: (window.localStorage.getItem("genderFilter")) ? JSON.parse(window.localStorage.getItem("genderFilter")) : ref("Both"),
+      genderFilter: window.localStorage.getItem("genderFilter")
+        ? JSON.parse(window.localStorage.getItem("genderFilter"))
+        : ref("Both"),
       options: [
         {
           label: "Both",
@@ -51,6 +58,9 @@ export default {
   },
   watch: {
     textSearch(newVal) {
+      if (typeof newVal === "string" || newVal instanceof String) {
+        newVal = newVal.toLowerCase();
+      }
       window.localStorage.setItem("searchText", newVal);
       this.$emit("search", newVal);
     },
@@ -58,6 +68,6 @@ export default {
       window.localStorage.setItem("genderFilter", JSON.stringify(newVal));
       this.$emit("genderFilter", newVal);
     },
-  }
+  },
 };
 </script>
