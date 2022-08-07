@@ -1,6 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  publicPath: process.env.NODE_ENV === "production" ? "/vc-trade-coding-challange/" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "/vc-trade-coding-challenge/" : "/",
 
   transpileDependencies: [
     'quasar'
