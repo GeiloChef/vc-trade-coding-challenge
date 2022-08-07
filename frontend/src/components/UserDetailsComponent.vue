@@ -8,7 +8,10 @@
           </q-avatar>
         </div>
         <div class="col-12 text-center q-mt-sm">
-          <div class="text-h6">{{ user.name.first }} {{ user.name.last }}</div>
+          <div class="text-h6">
+            {{ capitalizeFirstLetter(user.name.first) }}
+            {{ capitalizeFirstLetter(user.name.last) }}
+          </div>
           <div class="text text-subtitle1">{{ user.email }}</div>
         </div>
       </div>
@@ -91,6 +94,9 @@ export default {
   name: "UserDetails",
   methods: {
     moment,
+    capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    },
   },
   props: {
     user: {
