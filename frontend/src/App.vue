@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss">
 .break-word{
-  word-wrap: break-word;
+  word-break: break-all;
 }
 </style>
 
