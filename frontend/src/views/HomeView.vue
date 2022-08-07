@@ -26,7 +26,7 @@
               class="text-subtitle1 text-white"
               v-if="filtered && usersFiltered && usersFiltered.length > 0"
             >
-              Infinte scroll is deactivated on filter...
+              Infinite scroll is deactivated on filter...
             </div>
             <div
               class="text-subtitle1 text-white"
