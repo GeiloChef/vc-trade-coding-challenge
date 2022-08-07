@@ -7,7 +7,7 @@
     :id="user.login.uuid"
   >
     <q-card-section>
-      <div class="row">
+      <div class="row wrap justify-center items-center content-center">
         <div class="col-3">
           <q-avatar>
             <img :src="user.picture.thumbnail" />
