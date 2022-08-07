@@ -1,27 +1,42 @@
 <template>
-  <q-card square flat class="fill-width" style="height: 25vh">
-    <q-card-section>
-      <q-input filled v-model="textSearch" label="Search for users">
-        <template v-slot:prepend>
-          <q-icon name="search" />
-        </template>
-      </q-input>
-      <q-select square filled v-model="genderSelect" :options="options" label="Select gender"> </q-select>
-    </q-card-section>
-  </q-card>
+  <div>
+    <q-card square flat class="fill-width bg-primary" style="height: 25vh">
+      <q-card-section>
+        <q-input
+          filled
+          v-model="textSearch"
+          label="Search for users"
+          class="bg-white text-primary"
+        >
+          <template v-slot:prepend>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+        <q-select
+          square
+          filled
+          v-model="genderFilter"
+          :options="options"
+          label="Select gender"
+          class="bg-white text-primary"
+        >
+        </q-select>
+      </q-card-section>
+    </q-card>
+  </div>
 </template>
 <script>
-import { ref } from 'vue'
+import { ref } from "vue";
 export default {
   name: "SearchInput",
   data: () => {
     return {
-      textSearch: "",
-      genderSelect: ref("Both"),
+      textSearch: window.localStorage.getItem("searchText") || "",
+      genderFilter: JSON.parse(window.localStorage.getItem("genderFilter")) || ref("Both"),
       options: [
         {
           label: "Both",
-          value: "",
+          value: null,
         },
         {
           label: "Female",
@@ -34,5 +49,15 @@ export default {
       ],
     };
   },
+  watch: {
+    textSearch(newVal) {
+      window.localStorage.setItem("searchText", newVal);
+      this.$emit("search", newVal);
+    },
+    genderFilter(newVal) {
+      window.localStorage.setItem("genderFilter", JSON.stringify(newVal));
+      this.$emit("genderFilter", newVal);
+    },
+  }
 };
 </script>
