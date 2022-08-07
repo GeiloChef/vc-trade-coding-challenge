@@ -20,7 +20,7 @@
             v-bind:user="user"
             @select_user="selectUser"
           />
-
+          <!-- Show additional information if neccessary -->
           <div
             class="row wrap justify-center items-center content-center q-pa-sm"
           >
@@ -58,6 +58,11 @@
               />
             </q-card-section>
           </q-card>
+          <template v-slot:loading>
+            <div class="row justify-center q-my-md">
+              <q-spinner-dots color="white" size="40px" />
+            </div>
+          </template>
         </q-infinite-scroll>
       </q-scroll-area>
     </div>
@@ -193,8 +198,8 @@ export default {
             !this.genderFilter
           ) {
             if (
-              user.name.first.toLowerCase().includes(this.searchText.toLowerCase()) ||
-              user.name.last.toLowerCase().includes(this.searchText.toLowerCase()) ||
+              user.name.first.toLowerCase().includes(this.searchText) ||
+              user.name.last.toLowerCase().includes(this.searchText) ||
               !this.searchText
             ) {
               return user;
