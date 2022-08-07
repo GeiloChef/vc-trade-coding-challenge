@@ -66,7 +66,7 @@
       <UserDetailsComponent v-if="userSelected" v-bind:user="userSelected" />
     </div>
     <!-- Details of selected entry for mobile -->
-    <q-dialog v-model="showDetails" class="lt-sm">
+    <q-dialog v-model="showDetails" maximized class="lt-sm">
       <q-card dark>
         <q-card-section class="row items-center q-pb-none">
           <q-space />
@@ -193,8 +193,8 @@ export default {
             !this.genderFilter
           ) {
             if (
-              user.name.first.toLowerCase().includes(this.searchText) ||
-              user.name.last.toLowerCase().includes(this.searchText) ||
+              user.name.first.toLowerCase().includes(this.searchText.toLowerCase()) ||
+              user.name.last.toLowerCase().includes(this.searchText.toLowerCase()) ||
               !this.searchText
             ) {
               return user;
