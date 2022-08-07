@@ -21,15 +21,17 @@
             @select_user="selectUser"
           />
 
-          <div class="row justify-center q-my-md">
+          <div
+            class="row wrap justify-center items-center content-center q-pa-sm"
+          >
             <div
-              class="text-subtitle1 text-white"
+              class="text-subtitle1 text-white text-center"
               v-if="filtered && usersFiltered && usersFiltered.length > 0"
             >
-              Infinite scroll is deactivated on filter...
+              You can't load more entries while using filters.
             </div>
             <div
-              class="text-subtitle1 text-white"
+              class="text-subtitle1 text-white text-center"
               v-if="usersFiltered && usersFiltered.length === 0"
             >
               No users found with the current filter.
@@ -38,6 +40,7 @@
           <q-card square flat>
             <!-- "show more" - button -->
             <q-card-section
+              v-if="!filtered"
               class="
                 row
                 wrap
@@ -93,9 +96,11 @@ export default {
     return {
       showDetails: false,
       users: null,
-      usersFiltered: null,
+      usersFiltered: [],
       userSelected: null,
-      genderFilter: JSON.parse(window.localStorage.getItem("genderFilter")).value || null,
+      genderFilter: window.localStorage.getItem("genderFilter")
+        ? JSON.parse(window.localStorage.getItem("genderFilter")).value
+        : null,
       searchText: window.localStorage.getItem("searchText") || null,
       filtered: true,
       blockInifniteScroll: false,

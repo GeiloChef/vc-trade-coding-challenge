@@ -23,7 +23,7 @@
           >
             <div class="row">
               <div class="col-12 text-center">
-                <div class="text text-subtitle2">Adress</div>
+                <div class="text text-subtitle2">Address</div>
               </div>
               <div class="col-12 text-center">
                 <div class="text text-subtitle1">

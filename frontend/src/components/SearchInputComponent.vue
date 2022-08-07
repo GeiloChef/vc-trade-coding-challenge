@@ -32,7 +32,7 @@ export default {
   data: () => {
     return {
       textSearch: window.localStorage.getItem("searchText") || "",
-      genderFilter: JSON.parse(window.localStorage.getItem("genderFilter")) || ref("Both"),
+      genderFilter: (window.localStorage.getItem("genderFilter")) ? JSON.parse(window.localStorage.getItem("genderFilter")) : ref("Both"),
       options: [
         {
           label: "Both",
